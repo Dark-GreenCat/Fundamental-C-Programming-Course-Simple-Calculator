@@ -12,7 +12,7 @@ int main() {
     long long sum = firstOperand + secondOperand;
     int difference = firstOperand - secondOperand;
     long long product = firstOperand * secondOperand;
-    double quotient = firstOperand / secondOperand;
+    double quotient = ((double) firstOperand) / secondOperand;
 
     printf("-----------------------------");
     printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
