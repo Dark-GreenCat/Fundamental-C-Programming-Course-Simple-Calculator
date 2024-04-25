@@ -8,10 +8,13 @@ int main() {
 
     int firstOperand = firstNumber;
     int secondOperand = secondNumber;
+    char operator;
 
     printf("-----------------------------\n");
     printf("Enter first operand: ");
     scanf("%d", &firstOperand);
+    printf("Enter operator [+|-|*|/]: ");
+    scanf("%c", &operator);
     printf("Enter second operand: ");
     scanf("%d", &secondOperand);
 
@@ -21,8 +24,26 @@ int main() {
     double quotient = ((double) firstOperand) / secondOperand;
 
     printf("-----------------------------");
-    printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
-    printf("\n%-10s: %d - %d = %d", "Difference", firstOperand, secondOperand, difference);
-    printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
-    printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
+    switch (operator)
+    {
+    case '+':
+        printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
+        break;
+    
+    case '-':
+        printf("\n%-10s: %d - %d = %d", "Difference", firstOperand, secondOperand, difference);
+        break;
+    
+    case '*':
+        printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
+        break;
+
+    case '/':
+        printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
+        break;
+
+    default:
+        printf("\nInvalid operator! Operator must be [+|-|*|/].");
+        break;
+    }
 }
