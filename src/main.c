@@ -13,6 +13,7 @@ int main() {
     printf("-----------------------------\n");
     printf("Enter first operand: ");
     scanf("%d", &firstOperand);
+    while(getchar() != '\n');
     printf("Enter operator [+|-|*|/]: ");
     scanf("%c", &operator);
     printf("Enter second operand: ");
