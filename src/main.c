@@ -18,5 +18,5 @@ int main() {
     printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
     printf("\n%-10s: %d - %d = %d", "Difference", firstOperand, secondOperand, difference);
     printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
-    printf("\n%-10s: %d / %d = %lf", "Quotient", firstOperand, secondOperand, quotient);
+    printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
 }
