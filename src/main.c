@@ -9,6 +9,12 @@ int main() {
     int firstOperand = firstNumber;
     int secondOperand = secondNumber;
 
+    printf("-----------------------------\n");
+    printf("Enter first operand: ");
+    scanf("%d", &firstOperand);
+    printf("Enter second operand: ");
+    scanf("%d", &secondOperand);
+
     long long sum = firstOperand + secondOperand;
     int difference = firstOperand - secondOperand;
     long long product = firstOperand * secondOperand;
