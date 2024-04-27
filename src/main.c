@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-const int firstNumber = 1;
-const int secondNumber = 2;
+const int first_number = 1;
+const int second_number = 2;
 const char welcome_message[] = "Welcome to Simple Calculator";
 
 int main() {
     printf("%s\n", welcome_message);
 
-    int firstOperand = firstNumber;
-    int secondOperand = secondNumber;
+    int first_operand = first_number;
+    int second_operand = second_number;
     char operator;
     int scanned_count;
 
     printf("-----------------------------\n");
     do {
         printf("Enter first operand: ");
-        scanned_count = scanf("%d", &firstOperand);
+        scanned_count = scanf("%d", &first_operand);
         while (getchar() != '\n');
 
         if (scanned_count != 0) break;
@@ -33,7 +33,7 @@ int main() {
 
     do {
         printf("Enter second operand: ");
-        scanned_count = scanf("%d", &secondOperand);
+        scanned_count = scanf("%d", &second_operand);
         while (getchar() != '\n');
 
         if (scanned_count != 0) break;
@@ -44,24 +44,24 @@ int main() {
 
     printf("-----------------------------");
     if (operator == '+') {
-        long long sum = firstOperand + secondOperand;
-        printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
+        long long sum = first_operand + second_operand;
+        printf("\n%-10s: %d + %d = %ld", "Sum", first_operand, second_operand, sum);
     }
     else if (operator == '-') {
-        int difference = firstOperand - secondOperand;
-        printf("\n%-10s: %d - %d = %d", "Difference", firstOperand, secondOperand, difference);
+        int difference = first_operand - second_operand;
+        printf("\n%-10s: %d - %d = %d", "Difference", first_operand, second_operand, difference);
     }
     else if (operator == '*') {
-        long long product = firstOperand * secondOperand;
-        printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
+        long long product = first_operand * second_operand;
+        printf("\n%-10s: %d * %d = %ld", "Product", first_operand, second_operand, product);
     }
     else if (operator == '/') {
-        if (secondOperand == 0) {
+        if (second_operand == 0) {
             printf("\nDivision by 0 is not allowed!");
         }
         else {
-            double quotient = ((double)firstOperand) / secondOperand;
-            printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
+            double quotient = ((double)first_operand) / second_operand;
+            printf("\n%-10s: %d / %d = %.15g", "Quotient", first_operand, second_operand, quotient);
         }
     }
 }
