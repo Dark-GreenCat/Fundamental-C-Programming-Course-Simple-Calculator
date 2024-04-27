@@ -55,7 +55,12 @@ int main() {
         printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
     }
     else if (operator == '/') {
-        double quotient = ((double)firstOperand) / secondOperand;
-        printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
+        if (secondOperand == 0) {
+            printf("\nDivision by 0 is not allowed!");
+        }
+        else {
+            double quotient = ((double)firstOperand) / secondOperand;
+            printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
+        }
     }
 }
