@@ -9,32 +9,35 @@ int main() {
     int firstOperand = firstNumber;
     int secondOperand = secondNumber;
     char operator;
+    int scanned_count;
 
     printf("-----------------------------\n");
-    printf("Enter first operand: ");
-    while(scanf("%d", &firstOperand) == 0) {
-        while(getchar() != '\n');
-        printf("[Error] Input should be a number!");
-        printf("\nEnter first operand: ");
-    }
+    do {
+        printf("Enter first operand: ");
+        scanned_count = scanf("%d", &firstOperand);
+        while (getchar() != '\n');
 
-    while(getchar() != '\n');
-    printf("Enter operator [+|-|*|/]: ");
-    while(scanf(" %c", &operator)) {
-        while(getchar() != '\n');
-        if (operator == '+' || operator == '-' || operator == '*' || operator == '/')
-            break;
-        
-        printf("[Error] Input should be [+|-|*|/]!");
-        printf("\nEnter operator [+|-|*|/]: ");
-    }
+        if (scanned_count != 0) break;
+        printf("[Error] Input should be a number!\n");
+    } while (1);
 
-    printf("Enter second operand: ");
-    while(scanf("%d", &secondOperand) == 0) {
-        while(getchar() != '\n');
-        printf("[Error] Input should be a number!");
-        printf("\nEnter second operand: ");
-    }
+    do {
+        printf("Enter operator [+|-|*|/]: ");
+        scanned_count = scanf(" %c", &operator);
+        while (getchar() != '\n');
+
+        if (operator == '+' || operator == '-' || operator == '*' || operator == '/') break;
+        printf("[Error] Input should be [+|-|*|/]!\n");
+    } while (1);
+
+    do {
+        printf("Enter second operand: ");
+        scanned_count = scanf("%d", &secondOperand);
+        while (getchar() != '\n');
+
+        if (scanned_count != 0) break;
+        printf("[Error] Input should be a number!\n");
+    } while (1);
 
 
     long long sum = firstOperand + secondOperand;
