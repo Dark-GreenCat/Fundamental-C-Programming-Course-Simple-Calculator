@@ -1,14 +1,13 @@
 #include <stdio.h>
 
-const int first_number = 1;
-const int second_number = 2;
+const int default_number[] = { 1, 2 };
 const char welcome_message[] = "Welcome to Simple Calculator";
 
 int main() {
     printf("%s\n", welcome_message);
 
-    int first_operand = first_number;
-    int second_operand = second_number;
+    int first_operand = default_number[0];
+    int second_operand = default_number[1];
     char operator;
     int scanned_count;
 
