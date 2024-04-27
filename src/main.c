@@ -12,12 +12,23 @@ int main() {
 
     printf("-----------------------------\n");
     printf("Enter first operand: ");
-    scanf("%d", &firstOperand);
+    while(scanf("%d", &firstOperand) == 0) {
+        while(getchar() != '\n');
+        printf("[Error] Input should be a number!");
+        printf("\nEnter first operand: ");
+    }
+
     while(getchar() != '\n');
     printf("Enter operator [+|-|*|/]: ");
     scanf("%c", &operator);
+    
     printf("Enter second operand: ");
-    scanf("%d", &secondOperand);
+    while(scanf("%d", &secondOperand) == 0) {
+        while(getchar() != '\n');
+        printf("[Error] Input should be a number!");
+        printf("\nEnter second operand: ");
+    }
+
 
     long long sum = firstOperand + secondOperand;
     int difference = firstOperand - secondOperand;
