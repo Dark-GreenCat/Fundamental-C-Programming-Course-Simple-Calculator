@@ -2,9 +2,10 @@
 
 const int firstNumber = 1;
 const int secondNumber = 2;
+const char welcome_message[] = "Welcome to Simple Calculator";
 
 int main() {
-    printf("Welcome to Simple Calculator\n");
+    printf("%s\n", welcome_message);
 
     int firstOperand = firstNumber;
     int secondOperand = secondNumber;
