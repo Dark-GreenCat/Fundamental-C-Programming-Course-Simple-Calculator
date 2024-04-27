@@ -20,8 +20,15 @@ int main() {
 
     while(getchar() != '\n');
     printf("Enter operator [+|-|*|/]: ");
-    scanf("%c", &operator);
-    
+    while(scanf("%c", &operator)) {
+        while(getchar() != '\n');
+        if (operator == '+' || operator == '-' || operator == '*' || operator == '/')
+            break;
+        
+        printf("[Error] Input should be [+|-|*|/]!");
+        printf("\nEnter operator [+|-|*|/]: ");
+    }
+
     printf("Enter second operand: ");
     while(scanf("%d", &secondOperand) == 0) {
         while(getchar() != '\n');
