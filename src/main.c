@@ -40,32 +40,22 @@ int main() {
     } while (1);
 
 
-    long long sum = firstOperand + secondOperand;
-    int difference = firstOperand - secondOperand;
-    long long product = firstOperand * secondOperand;
-    double quotient = ((double) firstOperand) / secondOperand;
 
     printf("-----------------------------");
-    switch (operator)
-    {
-    case '+':
+    if (operator == '+') {
+        long long sum = firstOperand + secondOperand;
         printf("\n%-10s: %d + %d = %ld", "Sum", firstOperand, secondOperand, sum);
-        break;
-    
-    case '-':
+    }
+    else if (operator == '-') {
+        int difference = firstOperand - secondOperand;
         printf("\n%-10s: %d - %d = %d", "Difference", firstOperand, secondOperand, difference);
-        break;
-    
-    case '*':
+    }
+    else if (operator == '*') {
+        long long product = firstOperand * secondOperand;
         printf("\n%-10s: %d * %d = %ld", "Product", firstOperand, secondOperand, product);
-        break;
-
-    case '/':
+    }
+    else if (operator == '/') {
+        double quotient = ((double)firstOperand) / secondOperand;
         printf("\n%-10s: %d / %d = %.15g", "Quotient", firstOperand, secondOperand, quotient);
-        break;
-
-    default:
-        printf("\nInvalid operator! Operator must be [+|-|*|/].");
-        break;
     }
 }
