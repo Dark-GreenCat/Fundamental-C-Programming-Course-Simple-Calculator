@@ -35,7 +35,7 @@ int main() {
     printf("\n\t1. Basic calculation");
     printf("\n\t2. Base 10 to 2 converter");
     printf("\n\t3. Greatest common divisor");
-    printf("\nSelect mode [1-2]: ");
+    printf("\nSelect mode [1-3]: ");
     scanf(" %c", &mode);
     while(getchar() != '\n');
     printf("-----------------------------\n");
