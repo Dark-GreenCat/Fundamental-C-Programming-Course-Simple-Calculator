@@ -3,15 +3,10 @@
 const int default_number[] = { 1, 2 };
 const char welcome_message[] = "Welcome to Simple Calculator";
 
-int main() {
-    printf("%s\n", welcome_message);
-
-    int first_operand = default_number[0];
-    int second_operand = default_number[1];
-    char operator;
+int get_first_operand() {
+    int first_operand;
     int scanned_count;
 
-    printf("-----------------------------\n");
     do {
         printf("Enter first operand: ");
         scanned_count = scanf("%d", &first_operand);
@@ -21,14 +16,12 @@ int main() {
         printf("[Error] Input should be a number!\n");
     } while (1);
 
-    do {
-        printf("Enter operator [+|-|*|/]: ");
-        scanned_count = scanf(" %c", &operator);
-        while (getchar() != '\n');
+    return first_operand;
+}
 
-        if (operator == '+' || operator == '-' || operator == '*' || operator == '/') break;
-        printf("[Error] Input should be [+|-|*|/]!\n");
-    } while (1);
+int get_second_operand() {
+    int second_operand;
+    int scanned_count;
 
     do {
         printf("Enter second operand: ");
@@ -39,7 +32,37 @@ int main() {
         printf("[Error] Input should be a number!\n");
     } while (1);
 
+    return second_operand;
+}
 
+char get_operator() {
+    char operator;
+    int scanned_count;
+
+    do {
+        printf("Enter operator [+|-|*|/]: ");
+        scanned_count = scanf(" %c", &operator);
+        while (getchar() != '\n');
+
+        if (operator == '+' || operator == '-' || operator == '*' || operator == '/') break;
+        printf("[Error] Input should be [+|-|*|/]!\n");
+    } while (1);
+
+    return operator;
+}
+
+int main() {
+    printf("%s\n", welcome_message);
+
+    int first_operand = default_number[0];
+    int second_operand = default_number[1];
+    char operator;
+    int scanned_count;
+
+    printf("-----------------------------\n");
+    first_operand = get_first_operand();
+    operator = get_operator();
+    second_operand = get_second_operand();
 
     printf("-----------------------------");
     if (operator == '+') {
