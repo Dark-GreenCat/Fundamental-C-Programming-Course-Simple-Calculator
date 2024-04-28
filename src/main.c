@@ -3,8 +3,7 @@
 const int default_number[] = { 1, 2 };
 const char welcome_message[] = "Welcome to Simple Calculator";
 
-int get_first_operand();
-int get_second_operand();
+int get_operand(const char message[]);
 char get_operator();
 void show_result(int first_operand, int second_operand, char operator);
 
@@ -17,44 +16,28 @@ int main() {
     int scanned_count;
 
     printf("-----------------------------\n");
-    first_operand = get_first_operand();
+    first_operand = get_operand("Enter first operand");
     operator = get_operator();
-    second_operand = get_second_operand();
+    second_operand = get_operand("Enter second operand");
 
     printf("-----------------------------");
     show_result(first_operand, second_operand, operator);
 }
 
-int get_first_operand() {
-    int first_operand;
+int get_operand(const char message[]) {
+    int operand;
     int scanned_count;
 
     do {
-        printf("Enter first operand: ");
-        scanned_count = scanf("%d", &first_operand);
+        printf("%s: ", message);
+        scanned_count = scanf("%d", &operand);
         while (getchar() != '\n');
 
         if (scanned_count != 0) break;
         printf("[Error] Input should be a number!\n");
     } while (1);
 
-    return first_operand;
-}
-
-int get_second_operand() {
-    int second_operand;
-    int scanned_count;
-
-    do {
-        printf("Enter second operand: ");
-        scanned_count = scanf("%d", &second_operand);
-        while (getchar() != '\n');
-
-        if (scanned_count != 0) break;
-        printf("[Error] Input should be a number!\n");
-    } while (1);
-
-    return second_operand;
+    return operand;    
 }
 
 char get_operator() {
