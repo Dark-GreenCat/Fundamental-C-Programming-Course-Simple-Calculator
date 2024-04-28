@@ -26,6 +26,7 @@ int main() {
     printf("\n\t1. Basic calculation");
     printf("\nSelect mode [1]: ");
     scanf(" %c", &mode);
+    while(getchar() != '\n');
 
     switch (mode)
     {
