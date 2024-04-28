@@ -154,16 +154,15 @@ void launch_gcd() {
     unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);
     unsigned int second_number = (unsigned int) get_input("Enter second positive integer", "[ERROR] Input should be a number", false);
 
+    if (first_number > second_number) {
+        unsigned int temp = first_number;
+        first_number = second_number;
+        second_number = temp;
+    }
     printf("\nGCD: %u", calculate_gcd(first_number, second_number));
 }
 
 unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number) {
-    if (smaller_number > greater_number) {
-        unsigned int temp = smaller_number;
-        smaller_number = greater_number;
-        greater_number = temp;
-    }
-
     if (smaller_number == 0) return greater_number;
-    return calculate_gcd(smaller_number, greater_number - smaller_number);
+    return calculate_gcd(greater_number % smaller_number, smaller_number);
 }
