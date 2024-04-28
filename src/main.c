@@ -32,8 +32,25 @@ int main() {
 }
 
 int get_input(const char input_message[], const char error_message[], bool is_operator) {
-    if (is_operator) return get_operator(input_message, error_message);
-    else return get_operand(input_message, error_message);
+    int scanned_count;
+
+    do {
+        printf("%s: ", input_message);
+
+        if (is_operator) {
+            char operator;
+            scanf(" %c", &operator);
+            while (getchar() != '\n');
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/') return operator;
+        }
+        else {
+            int operand;
+            scanf("%d", &operand);
+            while (getchar() != '\n');
+            if (scanned_count != 0) return operand;
+        }
+        printf("%s\n", error_message);
+    } while (1);
 }
 
 int get_operand(const char input_message[], const char error_message[]) {
