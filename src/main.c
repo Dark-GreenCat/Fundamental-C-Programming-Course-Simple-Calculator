@@ -30,6 +30,7 @@ int main() {
     printf("\nSimple Calculator Mode");
     printf("\n\t1. Basic calculation");
     printf("\n\t2. Base 10 to 2 converter");
+    printf("\n\t3. Greatest common divisor");
     printf("\nSelect mode [1-2]: ");
     scanf(" %c", &mode);
     while(getchar() != '\n');
@@ -43,6 +44,10 @@ int main() {
     
     case '2':
         launch_base_10_to_2_converter();
+        break;
+
+    case '3':
+        printf("This feature is currently in development");
         break;
 
     default:
