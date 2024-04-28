@@ -22,7 +22,7 @@ void launch_basic_calculation();
 */
 void launch_base_10_to_2_converter();
 void launch_gcd();
-unsigned int calculate_gcd(unsigned int first_number, unsigned int second_number);
+unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number);
 
 int main() {
     printf("%s", welcome_message);
@@ -154,15 +154,16 @@ void launch_gcd() {
     unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);
     unsigned int second_number = (unsigned int) get_input("Enter second positive integer", "[ERROR] Input should be a number", false);
 
-    printf("\nGCD: %d", calculate_gcd(first_number, second_number));
+    printf("\nGCD: %u", calculate_gcd(first_number, second_number));
 }
 
-unsigned int calculate_gcd(unsigned int first_number, unsigned int second_number) {
-    if (first_number == 0 || second_number == 0)
-        return (first_number + second_number);
-    
-    if (first_number > second_number) 
-        return calculate_gcd(first_number - second_number, second_number);
-    else
-        return calculate_gcd(first_number, second_number - first_number);
+unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number) {
+    if (smaller_number > greater_number) {
+        unsigned int temp = smaller_number;
+        smaller_number = greater_number;
+        greater_number = temp;
+    }
+
+    if (smaller_number == 0) return greater_number;
+    return calculate_gcd(smaller_number, greater_number - smaller_number);
 }
