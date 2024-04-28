@@ -22,6 +22,7 @@ void launch_basic_calculation();
 */
 void launch_base_10_to_2_converter();
 void launch_gcd();
+unsigned int calculate_gcd(unsigned int first_number, unsigned int second_number);
 
 int main() {
     printf("%s", welcome_message);
@@ -150,5 +151,12 @@ void launch_base_10_to_2_converter() {
 }
 
 void launch_gcd() {
+    unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);
+    unsigned int second_number = (unsigned int) get_input("Enter second positive integer", "[ERROR] Input should be a number", false);
 
+    printf("\nGCD: %d", calculate_gcd(first_number, second_number));
+}
+
+unsigned int calculate_gcd(unsigned int first_number, unsigned int second_number) {
+    return 0;
 }
