@@ -51,20 +51,7 @@ char get_operator() {
     return operator;
 }
 
-int main() {
-    printf("%s\n", welcome_message);
-
-    int first_operand = default_number[0];
-    int second_operand = default_number[1];
-    char operator;
-    int scanned_count;
-
-    printf("-----------------------------\n");
-    first_operand = get_first_operand();
-    operator = get_operator();
-    second_operand = get_second_operand();
-
-    printf("-----------------------------");
+void show_result(int first_operand, int second_operand, char operator) {
     if (operator == '+') {
         long long sum = first_operand + second_operand;
         printf("\n%-10s: %d + %d = %ld", "Sum", first_operand, second_operand, sum);
@@ -86,4 +73,21 @@ int main() {
             printf("\n%-10s: %d / %d = %.15g", "Quotient", first_operand, second_operand, quotient);
         }
     }
+}
+
+int main() {
+    printf("%s\n", welcome_message);
+
+    int first_operand = default_number[0];
+    int second_operand = default_number[1];
+    char operator;
+    int scanned_count;
+
+    printf("-----------------------------\n");
+    first_operand = get_first_operand();
+    operator = get_operator();
+    second_operand = get_second_operand();
+
+    printf("-----------------------------");
+    show_result(first_operand, second_operand, operator);
 }
