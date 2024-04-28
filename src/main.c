@@ -129,6 +129,16 @@ void launch_basic_calculation() {
 void launch_base_10_to_2_converter() {
     unsigned int number;
     number = (unsigned int) get_input("Enter a 32-bit integer", "[Error] Input shoule be a number!", false);
-
     printf("\nNumber received: %u", number);
+
+    bool binary[32] = { 0 };
+    for (int i = 0; i < 32; i++) {
+        binary[i] = (number % 2);
+        number /= 2;
+    }
+
+    printf("\nBinary form: ");
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
 }
