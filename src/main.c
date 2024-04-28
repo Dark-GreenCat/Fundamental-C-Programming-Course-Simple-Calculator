@@ -4,7 +4,7 @@ const int default_number[] = { 1, 2 };
 const char welcome_message[] = "Welcome to Simple Calculator";
 
 int get_operand(const char input_message[], const char error_message[]);
-char get_operator();
+char get_operator(const char input_message[], const char error_message[]);
 void show_result(int first_operand, int second_operand, char operator);
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
 
     printf("-----------------------------\n");
     first_operand = get_operand("Enter first operand", "[Error] Input should be a number!");
-    operator = get_operator();
+    operator = get_operator("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!");
     second_operand = get_operand("Enter second operand", "[Error] Input should be a number!");
 
     printf("-----------------------------");
@@ -40,17 +40,17 @@ int get_operand(const char input_message[], const char error_message[]) {
     return operand;    
 }
 
-char get_operator() {
+char get_operator(const char input_message[], const char error_message[]) {
     char operator;
     int scanned_count;
 
     do {
-        printf("Enter operator [+|-|*|/]: ");
+        printf("%s: ", input_message);
         scanned_count = scanf(" %c", &operator);
         while (getchar() != '\n');
 
         if (operator == '+' || operator == '-' || operator == '*' || operator == '/') break;
-        printf("[Error] Input should be [+|-|*|/]!\n");
+        printf("%s\n", error_message);
     } while (1);
 
     return operator;
