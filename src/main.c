@@ -21,6 +21,7 @@ void launch_basic_calculation();
     This function supports 32-bit positive integer only.
 */
 void launch_base_10_to_2_converter();
+void launch_gcd();
 
 int main() {
     printf("%s", welcome_message);
@@ -47,7 +48,7 @@ int main() {
         break;
 
     case '3':
-        printf("This feature is currently in development");
+        launch_gcd();
         break;
 
     default:
@@ -146,4 +147,8 @@ void launch_base_10_to_2_converter() {
     for (int i = 31; i >= 0; i--) {
         printf("%d", binary[i]);
     }
+}
+
+void launch_gcd() {
+
 }
