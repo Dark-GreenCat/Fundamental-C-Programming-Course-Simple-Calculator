@@ -24,9 +24,11 @@ int main() {
     char mode = 0;
     printf("\nSimple Calculator Mode");
     printf("\n\t1. Basic calculation");
+    printf("\n\t2. Base 10 to 2 converter");
     printf("\nSelect mode [1]: ");
     scanf(" %c", &mode);
     while(getchar() != '\n');
+    printf("-----------------------------\n");
 
     switch (mode)
     {
@@ -34,6 +36,10 @@ int main() {
         launch_basic_calculation();
         break;
     
+    case '2':
+        printf("\nThis mode is currently in development!");
+        break;
+
     default:
         printf("\nInvalid mode!");
         break;
