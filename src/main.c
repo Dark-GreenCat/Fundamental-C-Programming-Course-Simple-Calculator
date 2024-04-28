@@ -24,6 +24,7 @@ void launch_base_10_to_2_converter();
 void launch_gcd();
 unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number);
 void swap(unsigned int* first_number, unsigned int* second_number);
+void sort(unsigned int* first_number, unsigned int* second_number);
 
 int main() {
     printf("%s", welcome_message);
@@ -155,7 +156,7 @@ void launch_gcd() {
     unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);
     unsigned int second_number = (unsigned int) get_input("Enter second positive integer", "[ERROR] Input should be a number", false);
 
-    if (first_number > second_number) swap(&first_number, &second_number);
+    sort(&first_number, &second_number);
     printf("\nGCD: %u", calculate_gcd(first_number, second_number));
 }
 
@@ -168,4 +169,9 @@ void swap(unsigned int* first_number, unsigned int* second_number) {
         unsigned int temp = *first_number;
         *first_number = *second_number;
         *second_number = temp;
+}
+
+void sort(unsigned int* first_number, unsigned int* second_number) {
+    if (*first_number > *second_number)
+        swap(first_number, second_number);
 }
