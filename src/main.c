@@ -127,5 +127,8 @@ void launch_basic_calculation() {
 }
 
 void launch_base_10_to_2_converter() {
-    
+    unsigned int number;
+    number = (unsigned int) get_input("Enter a 32-bit integer", "[Error] Input shoule be a number!", false);
+
+    printf("\nNumber received: %u", number);
 }
