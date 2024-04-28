@@ -15,24 +15,12 @@ int get_input(const char input_message[], const char error_message[], bool is_op
     The result is returned as long long type (which means double number will lose the fractional part).
 */
 long long show_result(int first_operand, int second_operand, char operator);
+void launch_basic_calculation();
 
 int main() {
-    printf("%s\n", welcome_message);
-
-    int first_operand = default_number[0];
-    int second_operand = default_number[1];
-    char operator;
-
-    printf("-----------------------------\n");
-    first_operand = get_input("Enter first operand", "[Error] Input should be a number!", false);
-    while (true) {
-        operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
-        second_operand = get_input("Enter operand", "[Error] Input should be a number!", false);
-        printf("-----------------------------");
-        first_operand = (int) show_result(first_operand, second_operand, operator);
-        printf("\n-----------------------------");
-        printf("\nCurrent value: %d\n", first_operand);
-    }   
+    printf("%s", welcome_message);
+    printf("\n-----------------------------");
+    launch_basic_calculation();
 }
 
 int get_input(const char input_message[], const char error_message[], bool is_operator) {
@@ -92,4 +80,20 @@ long long show_result(int first_operand, int second_operand, char operator) {
     }
 
     return result;
+}
+
+void launch_basic_calculation() {
+    int first_operand = default_number[0];
+    int second_operand = default_number[1];
+    char operator;
+
+    first_operand = get_input("\nEnter first operand", "[Error] Input should be a number!", false);
+    while (true) {
+        operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
+        second_operand = get_input("Enter operand", "[Error] Input should be a number!", false);
+        printf("-----------------------------");
+        first_operand = (int) show_result(first_operand, second_operand, operator);
+        printf("\n-----------------------------");
+        printf("\nCurrent value: %d\n", first_operand);
+    }   
 }
