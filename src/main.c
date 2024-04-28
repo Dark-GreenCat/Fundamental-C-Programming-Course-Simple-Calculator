@@ -76,7 +76,7 @@ char get_operator() {
 void show_result(int first_operand, int second_operand, char operator) {
     if (operator == '+') {
         long long sum = first_operand + second_operand;
-        printf("\n%-10s: %d + %d = %ld", "Sum", first_operand, second_operand, sum);
+        printf("\n%-10s: %d + %d = %lld", "Sum", first_operand, second_operand, sum);
     }
     else if (operator == '-') {
         int difference = first_operand - second_operand;
@@ -84,7 +84,7 @@ void show_result(int first_operand, int second_operand, char operator) {
     }
     else if (operator == '*') {
         long long product = first_operand * second_operand;
-        printf("\n%-10s: %d * %d = %ld", "Product", first_operand, second_operand, product);
+        printf("\n%-10s: %d * %d = %lld", "Product", first_operand, second_operand, product);
     }
     else if (operator == '/') {
         if (second_operand == 0) {
