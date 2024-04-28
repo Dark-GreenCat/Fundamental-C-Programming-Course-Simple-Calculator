@@ -16,6 +16,11 @@ int get_input(const char input_message[], const char error_message[], bool is_op
 */
 long long show_result(int first_operand, int second_operand, char operator);
 void launch_basic_calculation();
+/*
+    This function is used to create UI to convert user's inputted number to 32bit binary.
+    This function supports 32-bit positive integer only.
+*/
+void launch_base_10_to_2_converter();
 
 int main() {
     printf("%s", welcome_message);
@@ -25,7 +30,7 @@ int main() {
     printf("\nSimple Calculator Mode");
     printf("\n\t1. Basic calculation");
     printf("\n\t2. Base 10 to 2 converter");
-    printf("\nSelect mode [1]: ");
+    printf("\nSelect mode [1-2]: ");
     scanf(" %c", &mode);
     while(getchar() != '\n');
     printf("-----------------------------\n");
@@ -37,7 +42,7 @@ int main() {
         break;
     
     case '2':
-        printf("\nThis mode is currently in development!");
+        launch_base_10_to_2_converter();
         break;
 
     default:
@@ -119,4 +124,8 @@ void launch_basic_calculation() {
         printf("\n-----------------------------");
         printf("\nCurrent value: %d\n", first_operand);
     }   
+}
+
+void launch_base_10_to_2_converter() {
+    
 }
