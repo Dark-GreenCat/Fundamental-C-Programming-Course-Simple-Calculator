@@ -10,8 +10,6 @@ const char welcome_message[] = "Welcome to Simple Calculator";
         +) is_operator = true: get operator. Required type-cast to char
 */
 int get_input(const char input_message[], const char error_message[], bool is_operator);
-int get_operand(const char input_message[], const char error_message[]);
-char get_operator(const char input_message[], const char error_message[]);
 void show_result(int first_operand, int second_operand, char operator);
 
 int main() {
@@ -32,57 +30,23 @@ int main() {
 }
 
 int get_input(const char input_message[], const char error_message[], bool is_operator) {
-    int scanned_count;
+    int input;
 
     do {
         printf("%s: ", input_message);
 
         if (is_operator) {
-            char operator;
-            scanf(" %c", &operator);
+            scanf(" %c", &input);
             while (getchar() != '\n');
-            if (operator == '+' || operator == '-' || operator == '*' || operator == '/') return operator;
+            if ((char) input == '+' || (char) input == '-' || (char) input == '*' || (char) input == '/') return input;
         }
         else {
-            int operand;
-            scanf("%d", &operand);
+            int scanned_count = scanf("%d", &input);
             while (getchar() != '\n');
-            if (scanned_count != 0) return operand;
+            if (scanned_count != 0) return input;
         }
         printf("%s\n", error_message);
     } while (1);
-}
-
-int get_operand(const char input_message[], const char error_message[]) {
-    int operand;
-    int scanned_count;
-
-    do {
-        printf("%s: ", input_message);
-        scanned_count = scanf("%d", &operand);
-        while (getchar() != '\n');
-
-        if (scanned_count != 0) break;
-        printf("%s\n", error_message);
-    } while (1);
-
-    return operand;    
-}
-
-char get_operator(const char input_message[], const char error_message[]) {
-    char operator;
-    int scanned_count;
-
-    do {
-        printf("%s: ", input_message);
-        scanned_count = scanf(" %c", &operator);
-        while (getchar() != '\n');
-
-        if (operator == '+' || operator == '-' || operator == '*' || operator == '/') break;
-        printf("%s\n", error_message);
-    } while (1);
-
-    return operator;
 }
 
 void show_result(int first_operand, int second_operand, char operator) {
