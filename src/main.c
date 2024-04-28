@@ -20,7 +20,23 @@ void launch_basic_calculation();
 int main() {
     printf("%s", welcome_message);
     printf("\n-----------------------------");
-    launch_basic_calculation();
+
+    char mode = 0;
+    printf("\nSimple Calculator Mode");
+    printf("\n\t1. Basic calculation");
+    printf("\nSelect mode [1]: ");
+    scanf(" %c", &mode);
+
+    switch (mode)
+    {
+    case '1':
+        launch_basic_calculation();
+        break;
+    
+    default:
+        printf("\nInvalid mode!");
+        break;
+    }
 }
 
 int get_input(const char input_message[], const char error_message[], bool is_operator) {
