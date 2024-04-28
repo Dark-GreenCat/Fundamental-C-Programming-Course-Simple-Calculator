@@ -18,11 +18,10 @@ int main() {
     int first_operand = default_number[0];
     int second_operand = default_number[1];
     char operator;
-    int scanned_count;
 
     printf("-----------------------------\n");
     first_operand = get_input("Enter first operand", "[Error] Input should be a number!", false);
-    operator = get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
+    operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
     second_operand = get_input("Enter second operand", "[Error] Input should be a number!", false);
 
     printf("-----------------------------");
@@ -36,16 +35,20 @@ int get_input(const char input_message[], const char error_message[], bool is_op
         printf("%s: ", input_message);
 
         if (is_operator) {
-            scanf(" %c", &input);
+            char operator;
+            scanf(" %c", &operator);
             while (getchar() != '\n');
-            if ((char) input == '+' || (char) input == '-' || (char) input == '*' || (char) input == '/') break;
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/') {
+                input = operator;
+                break;
+            }
         }
         else {
             int scanned_count = scanf("%d", &input);
             while (getchar() != '\n');
             if (scanned_count != 0) break;
         }
-        
+
         printf("%s\n", error_message);
     } while (1);
 

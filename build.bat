@@ -1,1 +1,1 @@
-gcc src\main.c -o build\main
+gcc -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99 -o build\main src\main.c
