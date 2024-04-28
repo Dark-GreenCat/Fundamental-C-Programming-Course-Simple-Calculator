@@ -30,27 +30,27 @@ int main() {
     printf("%s", welcome_message);
     printf("\n-----------------------------");
 
-    char mode = 0;
+    unsigned short mode = 0;
     printf("\nSimple Calculator Mode");
     printf("\n\t1. Basic calculation");
     printf("\n\t2. Base 10 to 2 converter");
     printf("\n\t3. Greatest common divisor");
     printf("\nSelect mode [1-3]: ");
-    scanf(" %c", &mode);
+    scanf("%hu", &mode);
     while(getchar() != '\n');
     printf("-----------------------------\n");
 
     switch (mode)
     {
-    case '1':
+    case 1:
         launch_basic_calculation();
         break;
     
-    case '2':
+    case 2:
         launch_base_10_to_2_converter();
         break;
 
-    case '3':
+    case 3:
         launch_gcd();
         break;
 
