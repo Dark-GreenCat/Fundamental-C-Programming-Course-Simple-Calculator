@@ -10,7 +10,11 @@ const char welcome_message[] = "Welcome to Simple Calculator";
         +) is_operator = true: get operator. Required type-cast to char
 */
 int get_input(const char input_message[], const char error_message[], bool is_operator);
-void show_result(int first_operand, int second_operand, char operator);
+/*
+    This function is used to calculate the result and print to console.
+    The result is returned as long long type (which means double number will lose the fractional part).
+*/
+long long show_result(int first_operand, int second_operand, char operator);
 
 int main() {
     printf("%s\n", welcome_message);
@@ -21,11 +25,14 @@ int main() {
 
     printf("-----------------------------\n");
     first_operand = get_input("Enter first operand", "[Error] Input should be a number!", false);
-    operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
-    second_operand = get_input("Enter second operand", "[Error] Input should be a number!", false);
-
-    printf("-----------------------------");
-    show_result(first_operand, second_operand, operator);
+    while (true) {
+        operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
+        second_operand = get_input("Enter operand", "[Error] Input should be a number!", false);
+        printf("-----------------------------");
+        first_operand = (int) show_result(first_operand, second_operand, operator);
+        printf("\n-----------------------------");
+        printf("\nCurrent value: %d\n", first_operand);
+    }   
 }
 
 int get_input(const char input_message[], const char error_message[], bool is_operator) {
@@ -55,18 +62,23 @@ int get_input(const char input_message[], const char error_message[], bool is_op
     return input;
 }
 
-void show_result(int first_operand, int second_operand, char operator) {
+long long show_result(int first_operand, int second_operand, char operator) {
+    long long result;
+
     if (operator == '+') {
-        long long sum = first_operand + second_operand;
+        long long sum = (long long) first_operand + second_operand;
         printf("\n%-10s: %d + %d = %lld", "Sum", first_operand, second_operand, sum);
+        result = sum;
     }
     else if (operator == '-') {
         int difference = first_operand - second_operand;
         printf("\n%-10s: %d - %d = %d", "Difference", first_operand, second_operand, difference);
+        result = difference;
     }
     else if (operator == '*') {
-        long long product = first_operand * second_operand;
+        long long product = (long long) first_operand * second_operand;
         printf("\n%-10s: %d * %d = %lld", "Product", first_operand, second_operand, product);
+        result = product;
     }
     else if (operator == '/') {
         if (second_operand == 0) {
@@ -75,6 +87,9 @@ void show_result(int first_operand, int second_operand, char operator) {
         else {
             double quotient = ((double)first_operand) / second_operand;
             printf("\n%-10s: %d / %d = %.15g", "Quotient", first_operand, second_operand, quotient);
+            result = (long long) quotient;
         }
     }
+
+    return result;
 }
