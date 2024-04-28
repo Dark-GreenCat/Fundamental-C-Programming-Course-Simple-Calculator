@@ -38,15 +38,18 @@ int get_input(const char input_message[], const char error_message[], bool is_op
         if (is_operator) {
             scanf(" %c", &input);
             while (getchar() != '\n');
-            if ((char) input == '+' || (char) input == '-' || (char) input == '*' || (char) input == '/') return input;
+            if ((char) input == '+' || (char) input == '-' || (char) input == '*' || (char) input == '/') break;
         }
         else {
             int scanned_count = scanf("%d", &input);
             while (getchar() != '\n');
-            if (scanned_count != 0) return input;
+            if (scanned_count != 0) break;
         }
+        
         printf("%s\n", error_message);
     } while (1);
+
+    return input;
 }
 
 void show_result(int first_operand, int second_operand, char operator) {
