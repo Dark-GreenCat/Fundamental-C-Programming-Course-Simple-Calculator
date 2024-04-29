@@ -20,6 +20,7 @@ void launch_basic_calculation();
     This function is used to create UI to convert user's inputted number to 32bit binary.
     This function supports 32-bit positive integer only.
 */
+void base_10_to_2_convert(unsigned int number, bool* binary_array); 
 void launch_base_10_to_2_converter();
 void launch_gcd();
 unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number);
@@ -135,16 +136,20 @@ void launch_basic_calculation() {
     }   
 }
 
+void base_10_to_2_convert(unsigned int number, bool* binary_array) {
+    for (int i = 0; i < 32; i++) {
+        binary_array[i] = (number % 2);
+        number /= 2;
+    }
+}
+
 void launch_base_10_to_2_converter() {
     unsigned int number;
     number = (unsigned int) get_input("Enter a 32-bit integer", "[Error] Input shoule be a number!", false);
     printf("\nNumber received: %u", number);
 
     bool binary[32] = { 0 };
-    for (int i = 0; i < 32; i++) {
-        binary[i] = (number % 2);
-        number /= 2;
-    }
+    base_10_to_2_convert(number, binary);
 
     printf("\nBinary form: ");
     for (int i = 31; i >= 0; i--) {
