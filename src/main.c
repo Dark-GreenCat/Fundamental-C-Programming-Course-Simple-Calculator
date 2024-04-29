@@ -28,6 +28,13 @@ unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_num
 void swap(unsigned int* first_number, unsigned int* second_number);
 void sort(unsigned int* first_number, unsigned int* second_number);
 
+void (*launch_calculator[])(void) = {
+    launch_basic_calculation,
+    launch_base_10_to_2_converter,
+    launch_gcd
+};
+int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
+
 int main() {
     printf("%s", welcome_message);
     printf("\n-----------------------------");
@@ -42,23 +49,11 @@ int main() {
     while(getchar() != '\n');
     printf("-----------------------------\n");
 
-    switch (mode)
-    {
-    case 1:
-        launch_basic_calculation();
-        break;
-    
-    case 2:
-        launch_base_10_to_2_converter();
-        break;
-
-    case 3:
-        launch_gcd();
-        break;
-
-    default:
+    if (mode >= 1 && mode <= number_of_mode) {
+        launch_calculator[mode - 1]();
+    }
+    else {
         printf("\nInvalid mode!");
-        break;
     }
 }
 
