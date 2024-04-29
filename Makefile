@@ -1,8 +1,11 @@
-CC 		:= gcc
-CFLAGS 	:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99
+CC 			:= gcc
+CFLAGS 		:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99
 
-SRCS	:= $(wildcard src/*.c)
-OBJS	:= $(patsubst src/%.c, build/%.o, $(SRCS))
+SRCDIR		:= src
+BUILDDIR	:= build
+
+SRCS		:= $(wildcard $(SRCDIR)/*.c)
+OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 
 build: build/main.exe
 
