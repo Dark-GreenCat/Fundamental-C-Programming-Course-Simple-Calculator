@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 const int default_number[] = { 1, 2 };
 const char welcome_message[] = "Welcome to Simple Calculator";
@@ -144,17 +145,38 @@ void base_10_to_2_convert(unsigned int number, bool* binary_array) {
 }
 
 void launch_base_10_to_2_converter() {
-    unsigned int number;
-    number = (unsigned int) get_input("Enter a 32-bit integer", "[Error] Input shoule be a number!", false);
-    printf("\nNumber received: %u", number);
+    unsigned int number_of_conversion = 0;
+    number_of_conversion = (unsigned int) get_input("Enter number of conversion", "[Error] Input shoule be a number!", false);
+    printf("Number of conversion received: %u", number_of_conversion);
 
-    bool binary[32] = { 0 };
-    base_10_to_2_convert(number, binary);
-
-    printf("\nBinary form: ");
-    for (int i = 31; i >= 0; i--) {
-        printf("%d", binary[i]);
+    unsigned int* number_array = NULL;
+    number_array = (unsigned int*) malloc(number_of_conversion * sizeof(unsigned int));
+    if (number_array == NULL) {
+        printf("\n[ERROR] Failed to allocate memory");
+        printf("\nExiting...");
+        return;
     }
+
+    for (unsigned int i = 0; i < number_of_conversion; i++) {
+        printf("\n\nGetting number_array[%d]:", i);
+        number_array[i] = (unsigned int) get_input("\nEnter a 32-bit integer", "[Error] Input shoule be a number!", false);
+        printf("number_array[%d] = %u", i, number_array[i]);
+    }
+
+    printf("\n\nConverion result:");
+    for (unsigned int i = 0; i < number_of_conversion; i++) {
+        bool binary[32] = { 0 };
+        base_10_to_2_convert(number_array[i], binary);
+
+        char message[30];
+        sprintf(message, "number_array[%d]: %u", i, number_array[i]);
+        printf("\n%-30s - binary form: ", message);
+        for (int j = 31; j >= 0; j--) {
+            printf("%d", binary[j]);
+        }
+    }
+
+    free(number_array);
 }
 
 void launch_gcd() {
