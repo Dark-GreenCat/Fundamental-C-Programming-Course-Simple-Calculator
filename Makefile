@@ -1,9 +1,11 @@
 CC 			:= gcc
-CFLAGS 		:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99 -I inc
+CFLAGS 		:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99
 
+INCDIR		:= inc
 SRCDIR		:= src
 BUILDDIR	:= build
 
+CFLAGS		+= -I $(INCDIR)
 SRCS		:= $(wildcard $(SRCDIR)/*.c)
 OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 
