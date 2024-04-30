@@ -5,6 +5,15 @@
 #include "input.h"
 #include "ui.h"
 
+double calculate(double first_operand, double second_operand, char operator) {
+    switch (operator) {
+        case '+': return (first_operand + second_operand);
+        case '-': return (first_operand - second_operand);
+        case '*': return (first_operand * second_operand);
+        case '/': return (first_operand / second_operand);
+    }
+}
+
 long long show_result(int first_operand, int second_operand, char operator) {
     long long result;
 

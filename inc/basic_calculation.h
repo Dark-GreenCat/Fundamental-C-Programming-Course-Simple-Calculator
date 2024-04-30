@@ -1,6 +1,7 @@
 #ifndef BASIC_CALCULATION_H
 #define BASIC_CALCULATION_H
 
+double calculate(double first_operand, double second_operand, char operator);
 /*
     This function is used to calculate the result and print to console.
     The result is returned as long long type (which means double number will lose the fractional part).
