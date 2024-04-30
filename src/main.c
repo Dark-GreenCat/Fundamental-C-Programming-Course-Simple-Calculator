@@ -18,7 +18,26 @@ void (*launch_calculator[])(void) = {
 };
 int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
 
+bool get_mode(const char* stream, void* p_mode);
+void app_main();
+
 int main() {
+    app_main();
+}
+
+bool get_mode(const char* stream, void* p_mode) {
+    unsigned short* p_ushort_mode = (unsigned short*) p_mode;
+    sscanf(stream, "%hu", p_ushort_mode);
+    (*p_ushort_mode)--;
+
+    unsigned short mode = *p_ushort_mode;
+    if (mode < number_of_mode)
+        return true;
+    
+    return false;
+}
+
+void app_main() {
     ui_printf("%s", welcome_message);
     ui_printf("\n-----------------------------");
 
@@ -27,15 +46,10 @@ int main() {
     ui_printf("\n\t1. Basic calculation");
     ui_printf("\n\t2. Base 10 to 2 converter");
     ui_printf("\n\t3. Greatest common divisor");
-    ui_printf("\nSelect mode [1-3]: ");
-    scanf("%hu", &mode);
-    while(getchar() != '\n');
+    
+    mode = (unsigned short) ui_get_input("\nSelect mode [1-3]", "[ERROR] Invalid mode!", get_mode);
+    ui_printf("Mode selected: %hu\n", mode + 1);
     ui_printf("-----------------------------\n");
 
-    if (mode >= 1 && mode <= number_of_mode) {
-        launch_calculator[mode - 1]();
-    }
-    else {
-        ui_printf("\nInvalid mode!");
-    }
+    launch_calculator[mode]();
 }
