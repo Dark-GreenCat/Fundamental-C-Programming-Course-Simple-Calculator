@@ -1,5 +1,5 @@
 CC 			:= gcc
-CFLAGS 		:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c99
+CFLAGS 		:= -Wall -Wextra -Wpedantic -Wconversion -Wunreachable-code --std=c11
 
 INCDIR		:= inc
 SRCDIR		:= src

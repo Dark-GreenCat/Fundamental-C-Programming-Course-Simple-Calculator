@@ -2,14 +2,19 @@
 #define TEXT_H
 
 typedef struct {
-    char* welcome_msg;
-    char* mode_list_msg;
-    char* mode_input_select_msg;
-    char* mode_input_invalid_msg;
-    char* mode_selected_msg;
-    char* continue_msg;
-    char* goodbye_msg;
-    char* exit_msg;
+    union {
+        char* messages[8];
+        struct {
+            char* welcome_msg;
+            char* mode_list_msg;
+            char* mode_input_select_msg;
+            char* mode_input_invalid_msg;
+            char* mode_selected_msg;
+            char* continue_msg;
+            char* goodbye_msg;
+            char* exit_msg;
+        };
+    };
 } text_app_t;
 
 

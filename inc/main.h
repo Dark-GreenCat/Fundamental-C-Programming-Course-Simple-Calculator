@@ -5,6 +5,7 @@
 #include "mode_manager.h"
 #include "app.h"
 #include "text.h"
+#include "database.h"
 
 #include "input.h"
 #include "exit.h"

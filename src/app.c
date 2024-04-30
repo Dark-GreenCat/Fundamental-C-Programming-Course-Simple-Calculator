@@ -13,6 +13,8 @@ sc_handle_t default_sc_handler[] = {
     { "Greatest common divisor", launch_gcd }
 };
 
+const char text_filepath[] = "data/text.csv";
+
 int number_of_mode = sizeof(default_sc_handler) / sizeof(*default_sc_handler);
 
 sc_handle_t* sc_handler = NULL;
@@ -59,6 +61,11 @@ void app_init() {
     }
 
     sc_handler = _sc_handler;
+
+    text_t* p_sc_text = get_sc_text();
+    FILE* p_text_file = database_connect(text_filepath, "r");
+    database_load_text_app(p_text_file, &(p_sc_text->text_app));
+    database_disconnect(p_text_file);
 }
 
 void app_exit() {
@@ -69,7 +76,10 @@ void app_exit() {
     }
     free(sc_handler);
 
+
     ui_printf("%s", p_sc_text_app->goodbye_msg);
     ui_printf("\n%s", p_sc_text_app->exit_msg);
+
+    database_free_text_app(p_sc_text_app);
     exit(0);
 }
