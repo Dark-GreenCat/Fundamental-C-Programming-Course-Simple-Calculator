@@ -7,20 +7,14 @@
 
 const char welcome_message[] = "Welcome to Simple Calculator";
 
-void (*launch_calculator[])(void) = {
-    app_exit,
-    launch_basic_calculation,
-    launch_base_10_to_2_converter,
-    launch_gcd
+sc_handle_t default_sc_handler[] = {
+    { "Exit", app_exit },
+    { "Basic calculation", launch_basic_calculation },
+    { "Base 10 to 2 converter", launch_base_10_to_2_converter },
+    { "Greatest common divisor", launch_gcd }
 };
-int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
 
-const char mode_name[][30] = {
-    "Exit",
-    "Basic calculation",
-    "Base 10 to 2 converter",
-    "Greatest common divisor"
-};
+int number_of_mode = sizeof(default_sc_handler) / sizeof(*default_sc_handler);
 
 sc_handle_t* sc_handler = NULL;
 
@@ -66,7 +60,7 @@ void app_init() {
     sc_handle_t* _sc_handler = (sc_handle_t*) malloc((unsigned int) number_of_mode * sizeof(sc_handle_t));
 
     for (int i = 0; i < number_of_mode; i++) {
-        simple_calculator_constructor(_sc_handler + i, (char *) mode_name[i], launch_calculator[i]);
+        simple_calculator_constructor(_sc_handler + i, default_sc_handler[i].mode_name, default_sc_handler[i].launch);
     }
 
     sc_handler = _sc_handler;
