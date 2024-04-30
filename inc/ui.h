@@ -9,7 +9,4 @@
 */
 unsigned int ui_get_input(const char input_message[], const char error_message[], bool (*get_input)(const char*, void*));
 
-bool get_operator(const char* stream, void* p_operator);
-bool get_operand(const char* stream, void* p_operand);
-
 #endif

@@ -2,29 +2,23 @@
 
 #include <stdio.h>
 
-int get_input(const char input_message[], const char error_message[], bool is_operator) {
-    int input;
+bool get_operator(const char* stream, void* p_operator) {
+    char* p_char_operator = (char*) p_operator;
+    sscanf(stream, " %c", p_char_operator);
 
-    do {
-        printf("%s: ", input_message);
+    char operator = *p_char_operator;
+    if (operator == '+' || operator == '-' || operator == '*' || operator == '/')
+        return true;
+    
+    return false;
+}
 
-        if (is_operator) {
-            char operator;
-            scanf(" %c", &operator);
-            while (getchar() != '\n');
-            if (operator == '+' || operator == '-' || operator == '*' || operator == '/') {
-                input = operator;
-                break;
-            }
-        }
-        else {
-            int scanned_count = scanf("%d", &input);
-            while (getchar() != '\n');
-            if (scanned_count != 0) break;
-        }
+bool get_operand(const char* stream, void* p_operand) {
+    int* p_int_operand = (int*) p_operand;
+    int scanned_count = sscanf(stream, "%d", p_int_operand);
 
-        printf("%s\n", error_message);
-    } while (1);
-
-    return input;
+    if (scanned_count != 0 && scanned_count != EOF)
+        return true;
+    
+    return false;
 }

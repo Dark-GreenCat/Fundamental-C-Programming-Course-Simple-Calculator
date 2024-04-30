@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "input.h"
+#include "ui.h"
 
 void launch_gcd() {
-    unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);
-    unsigned int second_number = (unsigned int) get_input("Enter second positive integer", "[ERROR] Input should be a number", false);
+    unsigned int first_number = (unsigned int) ui_get_input("Enter first positive integer", "[ERROR] Input should be a number", get_operand);
+    unsigned int second_number = (unsigned int) ui_get_input("Enter second positive integer", "[ERROR] Input should be a number", get_operand);
 
     sort(&first_number, &second_number);
     printf("\nGCD: %u", calculate_gcd(first_number, second_number));

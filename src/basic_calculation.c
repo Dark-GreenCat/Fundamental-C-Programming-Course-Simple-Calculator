@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "input.h"
+#include "ui.h"
 
 long long show_result(int first_operand, int second_operand, char operator) {
     long long result;
@@ -41,10 +42,10 @@ void launch_basic_calculation() {
     int second_operand;
     char operator;
 
-    first_operand = get_input("\nEnter first operand", "[Error] Input should be a number!", false);
+    first_operand = (int) ui_get_input("\nEnter first operand", "[Error] Input should be a number!", get_operand);
     while (true) {
-        operator = (char) get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", true);
-        second_operand = get_input("Enter operand", "[Error] Input should be a number!", false);
+        operator = (char) ui_get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", get_operator);
+        second_operand = (int) ui_get_input("Enter operand", "[Error] Input should be a number!", get_operand);
         printf("-----------------------------");
         first_operand = (int) show_result(first_operand, second_operand, operator);
         printf("\n-----------------------------");
