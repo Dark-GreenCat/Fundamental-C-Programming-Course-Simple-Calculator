@@ -7,7 +7,10 @@ BUILDDIR	:= build
 SRCS		:= $(wildcard $(SRCDIR)/*.c)
 OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 
-build: build/main.exe
+build: $(BUILDDIR)/ build/main.exe
+
+$(BUILDDIR)/:
+	mkdir "$(BUILDDIR)"
 
 build/main.exe: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
