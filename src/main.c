@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <conio.h>
 
 #include "main.h"
 
@@ -22,16 +23,23 @@ void app_main() {
     ui_printf("\n-----------------------------");
 
     unsigned short mode = 0;
-    ui_printf("\nSimple Calculator Mode");
-    ui_printf("\n\t1. Basic calculation");
-    ui_printf("\n\t2. Base 10 to 2 converter");
-    ui_printf("\n\t3. Greatest common divisor");
-    
-    mode = (unsigned short) ui_get_input("\nSelect mode [1-3]", "[ERROR] Invalid mode!", get_mode);
-    ui_printf("Mode selected: %hu\n", mode + 1);
-    ui_printf("-----------------------------\n");
+    while (true) {
+        system("cls");
+        ui_printf("\nSimple Calculator Mode");
+        ui_printf("\n\t1. Basic calculation");
+        ui_printf("\n\t2. Base 10 to 2 converter");
+        ui_printf("\n\t3. Greatest common divisor");
+        
+        mode = (unsigned short) ui_get_input("\nSelect mode [1-3]", "[ERROR] Invalid mode!", get_mode);
+        ui_printf("Mode selected: %hu\n", mode + 1);
+        ui_printf("-----------------------------\n");
 
-    launch_calculator[mode]();
+        launch_calculator[mode]();
+
+        ui_printf("\n-----------------------------");
+        ui_printf("\nPress any to continue...");
+        getch();
+    }
 }
 
 int get_number_of_mode() {
