@@ -5,6 +5,7 @@ INCDIR		:= inc
 SRCDIR		:= src
 BUILDDIR	:= build
 APPDIR		:= bin
+APPNAME		:= simple_calculator
 
 CFLAGS		+= $(addprefix -I , $(INCDIR)) 
 SRCS		:= $(wildcard $(SRCDIR)/*.c)
@@ -12,23 +13,23 @@ OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS		:= $(wildcard $(addsuffix /*.h, $(INCDIR)))
 
 release: build
-	cp "$(BUILDDIR)/main.exe" "$(APPDIR)/main.exe"
+	cp "$(BUILDDIR)/$(APPNAME)" "$(APPDIR)/$(APPNAME)"
 
 run: build
-	build/main.exe
+	build/$(APPNAME)
 
-build: $(BUILDDIR)/ $(BUILDDIR)/ $(BUILDDIR)/main.exe
+build: $(BUILDDIR)/ $(BUILDDIR)/ $(BUILDDIR)/$(APPNAME)
 
 $(BUILDDIR)/:
 	mkdir "$(BUILDDIR)"
 
-$(BUILDDIR)/main.exe: $(OBJS)
+$(BUILDDIR)/$(APPNAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 build/%.o: src/%.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f build/*.o build/main.exe
+	rm -f build/*.o build/$(APPNAME)
 
 .PHONY: clean build run
