@@ -8,7 +8,7 @@ BUILDDIR	:= build
 CFLAGS		+= $(addprefix -I , $(INCDIR)) 
 SRCS		:= $(wildcard $(SRCDIR)/*.c)
 OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
-DEPS		:= $(wildcard $(INCDIR)/*.h)
+DEPS		:= $(wildcard $(addsuffix /*.h, $(INCDIR)))
 
 build: $(BUILDDIR)/ build/main.exe
 
