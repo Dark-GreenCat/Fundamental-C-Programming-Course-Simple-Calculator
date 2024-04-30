@@ -15,6 +15,15 @@ void (*launch_calculator[])(void) = {
 };
 int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
 
+const char mode_name[][30] = {
+    "Basic calculation",
+    "Base 10 to 2 converter",
+    "Greatest common divisor",
+    "Exit"
+};
+
+sc_handle_t* sc_handler = NULL;
+
 int main() {
     app_main();
 }
@@ -46,4 +55,24 @@ void app_main() {
 
 int get_number_of_mode() {
     return number_of_mode;
+}
+
+void app_init() {
+    int number_of_mode = get_number_of_mode();
+    sc_handle_t* _sc_handler = (sc_handle_t*) malloc((unsigned int) number_of_mode * sizeof(sc_handle_t));
+
+    for (int i = 0; i < number_of_mode; i++) {
+        simple_calculator_constructor(_sc_handler + i, (char *) mode_name[i], launch_calculator[i]);
+    }
+
+    sc_handler = _sc_handler;
+}
+
+void app_exit() {
+    simple_calculator_destructor(sc_handler);
+    free(sc_handler);
+
+    ui_printf("Hope to see you again!");
+    ui_printf("\n[Simple Calculator exitted]");
+    exit(0);
 }
