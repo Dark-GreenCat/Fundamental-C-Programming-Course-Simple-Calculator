@@ -1,6 +1,7 @@
 #ifndef UI_H
 #define UI_H
 
+#include <stdio.h>
 #include <stdbool.h>
 
 #define ui_printf(...) printf(__VA_ARGS__)

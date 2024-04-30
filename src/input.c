@@ -26,7 +26,6 @@ bool get_operand(const char* stream, void* p_operand) {
 bool get_mode(const char* stream, void* p_mode) {
     unsigned short* p_ushort_mode = (unsigned short*) p_mode;
     sscanf(stream, "%hu", p_ushort_mode);
-    (*p_ushort_mode)--;
 
     unsigned short mode = *p_ushort_mode;
     if (mode < get_number_of_mode())

@@ -8,6 +8,7 @@
 const char welcome_message[] = "Welcome to Simple Calculator";
 
 void (*launch_calculator[])(void) = {
+    launch_exit,
     launch_basic_calculation,
     launch_base_10_to_2_converter,
     launch_gcd
@@ -29,9 +30,10 @@ void app_main() {
         ui_printf("\n\t1. Basic calculation");
         ui_printf("\n\t2. Base 10 to 2 converter");
         ui_printf("\n\t3. Greatest common divisor");
+        ui_printf("\n\t0. Exit");
         
-        mode = (unsigned short) ui_get_input("\nSelect mode [1-3]", "[ERROR] Invalid mode!", get_mode);
-        ui_printf("Mode selected: %hu\n", mode + 1);
+        mode = (unsigned short) ui_get_input("\nSelect mode [0-3]", "[ERROR] Invalid mode!", get_mode);
+        ui_printf("Mode selected: %hu\n", mode);
         ui_printf("-----------------------------\n");
 
         launch_calculator[mode]();

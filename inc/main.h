@@ -4,6 +4,7 @@
 #include "ui.h"
 
 #include "input.h"
+#include "exit.h"
 #include "basic_calculation.h"
 #include "base_converter.h"
 #include "gcd.h"
