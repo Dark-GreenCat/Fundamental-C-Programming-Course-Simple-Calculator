@@ -2,10 +2,10 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "../inc/input.h"
-#include "../inc/basic_calculation.h"
-#include "../inc/base_converter.h"
-#include "../inc/gcd.h"
+#include "input.h"
+#include "basic_calculation.h"
+#include "base_converter.h"
+#include "gcd.h"
 
 const char welcome_message[] = "Welcome to Simple Calculator";
 
