@@ -16,7 +16,7 @@ release: build
 	cp "$(BUILDDIR)/$(APPNAME)" "$(APPDIR)/$(APPNAME)"
 
 run: build
-	build/$(APPNAME)
+	$(BUILDDIR)/$(APPNAME)
 
 build: $(BUILDDIR)/ $(BUILDDIR)/ $(BUILDDIR)/$(APPNAME)
 
@@ -26,10 +26,10 @@ $(BUILDDIR)/:
 $(BUILDDIR)/$(APPNAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-build/%.o: src/%.c $(DEPS)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f build/*.o build/$(APPNAME)
+	rm -f $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)
 
-.PHONY: clean build run
+.PHONY: clean build run release
