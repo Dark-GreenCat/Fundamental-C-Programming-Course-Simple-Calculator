@@ -67,7 +67,9 @@ void app_init() {
 }
 
 void app_exit() {
-    simple_calculator_destructor(sc_handler);
+    for (int i = 0; i < number_of_mode; i++) {
+        simple_calculator_destructor(sc_handler + i);
+    }
     free(sc_handler);
 
     ui_printf("Hope to see you again!");
