@@ -1,4 +1,4 @@
-// #include "ui.h"
+#include "ui.h"
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -41,9 +41,4 @@ unsigned int ui_get_input(const char input_message[], const char error_message[]
     } while (1);
 
     return input;
-}
-
-int main() {
-    unsigned int input = ui_get_input("Input", "Error", get_operand);
-    printf("\nReceived int: %d\nReceive char: %c", (int) input, *((char*) &input));
 }
