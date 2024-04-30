@@ -6,8 +6,6 @@
 #include <conio.h>
 #include "text.h"
 
-const char welcome_message[] = "Welcome to Simple Calculator";
-
 sc_handle_t default_sc_handler[] = {
     { "Exit", app_exit },
     { "Basic calculation", launch_basic_calculation },
@@ -20,26 +18,28 @@ int number_of_mode = sizeof(default_sc_handler) / sizeof(*default_sc_handler);
 sc_handle_t* sc_handler = NULL;
 
 void app_main() {
-    ui_printf("%s", welcome_message);
+    text_app_t* p_sc_text_app = &(get_sc_text()->text_app);
+
+    ui_printf("%s", p_sc_text_app->welcome_msg);
     ui_printf("\n-----------------------------");
 
     unsigned short mode = 0;
     while (true) {
-        ui_printf("\nSimple Calculator Mode");
+        ui_printf("\n%s", p_sc_text_app->mode_list_msg);
         for (int i = 0; i < number_of_mode; i++) {
             ui_printf("\n\t%hu. %s", i, sc_handler[i].mode_name);
         }
         
         char input_message[30];
-        sprintf(input_message, "\nSelect mode [0-%d]", number_of_mode - 1);
-        mode = (unsigned short) ui_get_input(input_message, "[ERROR] Invalid mode!", get_mode);
-        ui_printf("Mode selected: %hu\n", mode);
+        sprintf(input_message, "\n%s [0-%d]", p_sc_text_app->mode_input_select_msg, number_of_mode - 1);
+        mode = (unsigned short) ui_get_input(input_message, p_sc_text_app->mode_input_invalid_msg, get_mode);
+        ui_printf("%s: %hu\n", p_sc_text_app->mode_selected_msg, mode);
         ui_printf("-----------------------------\n");
 
         sc_handler[mode].launch();
 
         ui_printf("\n-----------------------------");
-        ui_printf("\nPress any to continue...");
+        ui_printf("\n%s", p_sc_text_app->continue_msg);
         getch();
         
         system("cls");
@@ -62,12 +62,14 @@ void app_init() {
 }
 
 void app_exit() {
+    text_app_t* p_sc_text_app = &(get_sc_text()->text_app);
+
     for (int i = 0; i < number_of_mode; i++) {
         simple_calculator_destructor(sc_handler + i);
     }
     free(sc_handler);
 
-    ui_printf("Hope to see you again!");
-    ui_printf("\n[Simple Calculator exitted]");
+    ui_printf("%s", p_sc_text_app->goodbye_msg);
+    ui_printf("\n%s", p_sc_text_app->exit_msg);
     exit(0);
 }
