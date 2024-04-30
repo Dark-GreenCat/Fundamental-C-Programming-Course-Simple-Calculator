@@ -5,7 +5,7 @@ INCDIR		:= inc
 SRCDIR		:= src
 BUILDDIR	:= build
 
-CFLAGS		+= -I $(INCDIR)
+CFLAGS		+= $(addprefix -I , $(INCDIR)) 
 SRCS		:= $(wildcard $(SRCDIR)/*.c)
 OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 
