@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include "ui.h"
+#include "mode_manager.h"
 
 #include "input.h"
 #include "exit.h"
