@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <conio.h>
+#include "text.h"
 
 const char welcome_message[] = "Welcome to Simple Calculator";
 

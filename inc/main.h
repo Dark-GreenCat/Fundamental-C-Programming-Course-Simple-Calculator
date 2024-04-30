@@ -4,6 +4,7 @@
 #include "ui.h"
 #include "mode_manager.h"
 #include "app.h"
+#include "text.h"
 
 #include "input.h"
 #include "exit.h"
