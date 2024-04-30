@@ -1,8 +1,8 @@
-#include "../inc/gcd.h"
+#include "gcd.h"
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "../inc/input.h"
+#include "input.h"
 
 void launch_gcd() {
     unsigned int first_number = (unsigned int) get_input("Enter first positive integer", "[ERROR] Input should be a number", false);

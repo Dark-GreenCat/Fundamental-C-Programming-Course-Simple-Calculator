@@ -1,8 +1,8 @@
-#include "../inc/base_converter.h"
+#include "base_converter.h"
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../inc/input.h"
+#include "input.h"
 
 void base_10_to_2_convert(unsigned int number, bool* binary_array) {
     for (int i = 0; i < 32; i++) {

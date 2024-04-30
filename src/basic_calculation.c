@@ -1,8 +1,8 @@
-#include "../inc/basic_calculation.h"
+#include "basic_calculation.h"
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "../inc/input.h"
+#include "input.h"
 
 long long show_result(int first_operand, int second_operand, char operator) {
     long long result;
