@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 
+#define ui_printf(...) printf(__VA_ARGS__)
+
 /*
     This function is to get input from user then check validation by get_input() function pointer.
     The "unsigned int" return value allows to type-cast to any number data type that are smaller or equal in size

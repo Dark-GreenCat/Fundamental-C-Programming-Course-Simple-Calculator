@@ -8,7 +8,7 @@ unsigned int ui_get_input(const char input_message[], const char error_message[]
     unsigned int input;
 
     do {
-        printf("%s: ", input_message);
+        ui_printf("%s: ", input_message);
 
         scanf("%101[^\n]", buffer);
         while (getchar() != '\n');
@@ -16,7 +16,7 @@ unsigned int ui_get_input(const char input_message[], const char error_message[]
         if (get_input(buffer, (void*) &input))
             break;
 
-        printf("%s\n", error_message);
+        ui_printf("%s\n", error_message);
     } while (1);
 
     return input;

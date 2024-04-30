@@ -15,32 +15,32 @@ void base_10_to_2_convert(unsigned int number, bool* binary_array) {
 void launch_base_10_to_2_converter() {
     unsigned int number_of_conversion = 0;
     number_of_conversion = (unsigned int) ui_get_input("Enter number of conversion", "[Error] Input shoule be a number!", get_operand);
-    printf("Number of conversion received: %u", number_of_conversion);
+    ui_printf("Number of conversion received: %u", number_of_conversion);
 
     unsigned int* number_array = NULL;
     number_array = (unsigned int*) malloc(number_of_conversion * sizeof(unsigned int));
     if (number_array == NULL) {
-        printf("\n[ERROR] Failed to allocate memory");
-        printf("\nExiting...");
+        ui_printf("\n[ERROR] Failed to allocate memory");
+        ui_printf("\nExiting...");
         return;
     }
 
     for (unsigned int i = 0; i < number_of_conversion; i++) {
-        printf("\n\nGetting number_array[%d]:", i);
+        ui_printf("\n\nGetting number_array[%d]:", i);
         number_array[i] = (unsigned int) ui_get_input("\nEnter a 32-bit integer", "[Error] Input shoule be a number!", get_operand);
-        printf("number_array[%d] = %u", i, number_array[i]);
+        ui_printf("number_array[%d] = %u", i, number_array[i]);
     }
 
-    printf("\n\nConverion result:");
+    ui_printf("\n\nConverion result:");
     for (unsigned int i = 0; i < number_of_conversion; i++) {
         bool binary[32] = { 0 };
         base_10_to_2_convert(number_array[i], binary);
 
         char message[30];
         sprintf(message, "number_array[%d]: %u", i, number_array[i]);
-        printf("\n%-30s - binary form: ", message);
+        ui_printf("\n%-30s - binary form: ", message);
         for (int j = 31; j >= 0; j--) {
-            printf("%d", binary[j]);
+            ui_printf("%d", binary[j]);
         }
     }
 

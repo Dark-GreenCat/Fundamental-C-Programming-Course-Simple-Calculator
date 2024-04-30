@@ -18,11 +18,11 @@ double calculate(double first_operand, double second_operand, char operator) {
 
 void show_result(int first_operand, int second_operand, double result, char operator) {
     if (operator == '/' && second_operand == 0) {
-        printf("\nDivision by 0 is not allowed!");
+        ui_printf("\nDivision by 0 is not allowed!");
         return;
     }
 
-    printf("\n%-10s: %d %c %d = %.15g", "Sum", first_operand, operator, second_operand, result);
+    ui_printf("\n%-10s: %d %c %d = %.15g", "Sum", first_operand, operator, second_operand, result);
 }
 
 void launch_basic_calculation() {
@@ -35,12 +35,12 @@ void launch_basic_calculation() {
     while (true) {
         operator = (char) ui_get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", get_operator);
         second_operand = (int) ui_get_input("Enter operand", "[Error] Input should be a number!", get_operand);
-        printf("-----------------------------");
+        ui_printf("-----------------------------");
         result = calculate(first_operand, second_operand, operator);
         show_result(first_operand, second_operand, result, operator);
-        printf("\n-----------------------------");
+        ui_printf("\n-----------------------------");
 
         first_operand = (int) result;
-        printf("\nCurrent value: %d\n", first_operand);
+        ui_printf("\nCurrent value: %d\n", first_operand);
     }   
 }

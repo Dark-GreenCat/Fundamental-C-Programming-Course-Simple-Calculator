@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "ui.h"
+
 #include "input.h"
 #include "basic_calculation.h"
 #include "base_converter.h"
@@ -17,23 +19,23 @@ void (*launch_calculator[])(void) = {
 int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
 
 int main() {
-    printf("%s", welcome_message);
-    printf("\n-----------------------------");
+    ui_printf("%s", welcome_message);
+    ui_printf("\n-----------------------------");
 
     unsigned short mode = 0;
-    printf("\nSimple Calculator Mode");
-    printf("\n\t1. Basic calculation");
-    printf("\n\t2. Base 10 to 2 converter");
-    printf("\n\t3. Greatest common divisor");
-    printf("\nSelect mode [1-3]: ");
+    ui_printf("\nSimple Calculator Mode");
+    ui_printf("\n\t1. Basic calculation");
+    ui_printf("\n\t2. Base 10 to 2 converter");
+    ui_printf("\n\t3. Greatest common divisor");
+    ui_printf("\nSelect mode [1-3]: ");
     scanf("%hu", &mode);
     while(getchar() != '\n');
-    printf("-----------------------------\n");
+    ui_printf("-----------------------------\n");
 
     if (mode >= 1 && mode <= number_of_mode) {
         launch_calculator[mode - 1]();
     }
     else {
-        printf("\nInvalid mode!");
+        ui_printf("\nInvalid mode!");
     }
 }

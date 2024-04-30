@@ -10,7 +10,7 @@ void launch_gcd() {
     unsigned int second_number = (unsigned int) ui_get_input("Enter second positive integer", "[ERROR] Input should be a number", get_operand);
 
     sort(&first_number, &second_number);
-    printf("\nGCD: %u", calculate_gcd(first_number, second_number));
+    ui_printf("\nGCD: %u", calculate_gcd(first_number, second_number));
 }
 
 unsigned int calculate_gcd(unsigned int smaller_number, unsigned int greater_number) {
