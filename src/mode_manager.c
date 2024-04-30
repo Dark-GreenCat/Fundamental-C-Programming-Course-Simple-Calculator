@@ -4,7 +4,7 @@
 #include <string.h>
 
 void simple_calculator_constructor(simple_calculator_handle_t* sc_handler, const char* mode_name, void(*launch)()) {
-    char* name = (char *) malloc(strlen(mode_name) * sizeof(char));
+    char* name = (char *) malloc((strlen(mode_name) + 1) * sizeof(char));
     strcpy(name, mode_name);
     
     sc_handler->mode_name = name;
