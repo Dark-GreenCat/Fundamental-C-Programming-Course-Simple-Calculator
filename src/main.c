@@ -2,12 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "ui.h"
-
-#include "input.h"
-#include "basic_calculation.h"
-#include "base_converter.h"
-#include "gcd.h"
+#include "main.h"
 
 const char welcome_message[] = "Welcome to Simple Calculator";
 
@@ -18,23 +13,8 @@ void (*launch_calculator[])(void) = {
 };
 int number_of_mode = sizeof(launch_calculator) / sizeof(*launch_calculator);
 
-bool get_mode(const char* stream, void* p_mode);
-void app_main();
-
 int main() {
     app_main();
-}
-
-bool get_mode(const char* stream, void* p_mode) {
-    unsigned short* p_ushort_mode = (unsigned short*) p_mode;
-    sscanf(stream, "%hu", p_ushort_mode);
-    (*p_ushort_mode)--;
-
-    unsigned short mode = *p_ushort_mode;
-    if (mode < number_of_mode)
-        return true;
-    
-    return false;
 }
 
 void app_main() {
@@ -52,4 +32,16 @@ void app_main() {
     ui_printf("-----------------------------\n");
 
     launch_calculator[mode]();
+}
+
+bool get_mode(const char* stream, void* p_mode) {
+    unsigned short* p_ushort_mode = (unsigned short*) p_mode;
+    sscanf(stream, "%hu", p_ushort_mode);
+    (*p_ushort_mode)--;
+
+    unsigned short mode = *p_ushort_mode;
+    if (mode < number_of_mode)
+        return true;
+    
+    return false;
 }
