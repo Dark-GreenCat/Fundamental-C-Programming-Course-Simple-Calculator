@@ -17,3 +17,8 @@ build/main.exe: $(OBJS)
 
 build/%.o: src/%.c
 	$(CC) $(CFLAGS) -c -o $@ $^
+
+clean:
+	rm -f build/*.o build/main.exe
+
+.PHONY: clean build
