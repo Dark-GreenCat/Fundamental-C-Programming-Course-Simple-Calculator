@@ -10,6 +10,9 @@ SRCS		:= $(wildcard $(SRCDIR)/*.c)
 OBJS		:= $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS		:= $(wildcard $(addsuffix /*.h, $(INCDIR)))
 
+run: build
+	build/main.exe
+
 build: $(BUILDDIR)/ build/main.exe
 
 $(BUILDDIR)/:
@@ -24,4 +27,4 @@ build/%.o: src/%.c $(DEPS)
 clean:
 	rm -f build/*.o build/main.exe
 
-.PHONY: clean build
+.PHONY: clean build run
