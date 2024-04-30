@@ -18,8 +18,8 @@ $(BUILDDIR)/:
 build/main.exe: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-build/%.o: src/%.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+build/%.o: src/%.c $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -f build/*.o build/main.exe
