@@ -33,7 +33,9 @@ void launch_basic_calculation() {
 
     first_operand = (int) ui_get_input("Enter first operand", "[Error] Input should be a number!", get_operand);
     while (true) {
-        operator = (char) ui_get_input("Enter operator [+|-|*|/]", "[Error] Input should be [+|-|*|/]!", get_operator);
+        operator = (char) ui_get_input("Enter operator [+|-|*|/] [Press x to exit]", "[Error] Input should be [+|-|*|/|x]!", get_operator);
+        if (operator == 'x') break;
+        
         second_operand = (int) ui_get_input("Enter operand", "[Error] Input should be a number!", get_operand);
         ui_printf("-----------------------------");
         result = calculate(first_operand, second_operand, operator);

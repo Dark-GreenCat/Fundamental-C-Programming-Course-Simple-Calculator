@@ -7,7 +7,7 @@ bool get_operator(const char* stream, void* p_operator) {
     sscanf(stream, " %c", p_char_operator);
 
     char operator = *p_char_operator;
-    if (operator == '+' || operator == '-' || operator == '*' || operator == '/')
+    if (operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == 'x')
         return true;
     
     return false;
